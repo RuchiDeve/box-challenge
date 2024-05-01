@@ -6,7 +6,7 @@ import java.util.List;
 
     public interface ItemService {
         Item addItemToBox(String txref, ItemDto itemDto);
-        List<Item> getItemsInBox(String txref);
-
     }
+
+
 

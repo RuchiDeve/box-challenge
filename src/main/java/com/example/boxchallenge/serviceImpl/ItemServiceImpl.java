@@ -9,8 +9,6 @@ import com.example.boxchallenge.repository.ItemRepository;
 import com.example.boxchallenge.service.ItemService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
@@ -53,9 +51,7 @@ public class ItemServiceImpl implements ItemService {
         return item;
     }
 
-    @Override
-    public List<Item> getItemsInBox(String txref) {
 
-        return itemRepository.findByBoxTxref(txref);
     }
-}
+
+

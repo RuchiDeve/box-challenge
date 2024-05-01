@@ -8,6 +8,7 @@ import com.example.boxchallenge.model.ItemLoadRequest;
 import com.example.boxchallenge.repository.BoxRepository;
 import com.example.boxchallenge.repository.ItemRepository;
 import com.example.boxchallenge.service.BoxService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +51,15 @@ public class BoxServiceImpl implements BoxService {
     public int getBoxBattery(String txref) {
         Box box = getBox(txref);
         return box.getBatteryCapacity();
+    }
+
+    @Override
+    public List<Item> checkLoadedItemsInBox(String txref) {
+        // Find the box with the given txref (box reference)
+        Box box = boxRepository.findByTxref(txref)
+                .orElseThrow(() -> new IllegalArgumentException("Box not found for txref: " + txref));
+
+        // Return the list of loaded items in the box
+        return box.getItems();
     }
 }
