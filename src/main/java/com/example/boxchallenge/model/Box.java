@@ -24,6 +24,7 @@ public class Box {
     private BoxState state;
     @OneToMany(mappedBy = "box", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Item> items;
+
     public double getTotalItemWeight() {
         if (items == null) {
             return 0.0;

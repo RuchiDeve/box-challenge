@@ -55,11 +55,8 @@ public class BoxServiceImpl implements BoxService {
 
     @Override
     public List<Item> checkLoadedItemsInBox(String txref) {
-        // Find the box with the given txref (box reference)
-        Box box = boxRepository.findByTxref(txref)
-                .orElseThrow(() -> new IllegalArgumentException("Box not found for txref: " + txref));
+        Box box = boxRepository.findByTxref(txref).orElseThrow(() -> new IllegalArgumentException("Box not found for txref: " + txref));
 
-        // Return the list of loaded items in the box
         return box.getItems();
     }
 }

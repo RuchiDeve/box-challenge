@@ -34,8 +34,7 @@ public class BoxDto {
     private Integer batteryCapacity;
 
     @NotNull(message = "state cannot be null")
-    @Pattern(regexp = "IDLE|LOADING|LOADED|DELIVERING|DELIVERED|RETURNING",
-            message = "state must be one of the following: IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING")
+    @Pattern(regexp = "IDLE|LOADING|LOADED|DELIVERING|DELIVERED|RETURNING", message = "state must be one of the following: IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING")
     private String state;
 
     @OneToMany(mappedBy = "box", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

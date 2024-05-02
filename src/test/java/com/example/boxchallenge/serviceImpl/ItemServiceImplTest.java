@@ -45,7 +45,6 @@ class ItemServiceImplTest {
 
     @Test
     void testAddItemToBoxStateNotSuitable() {
-        // Given
         String txref = "box123";
         ItemDto itemDto = new ItemDto("item1", 10, "code123");
         Box box = new Box();
@@ -65,9 +64,8 @@ class ItemServiceImplTest {
         Box box = new Box();
         box.setTxref(txref);
         box.setState(BoxState.IDLE);
-        box.setWeightLimit(5.0); // Set weight limit lower than item weight
+        box.setWeightLimit(5.0);
         box.setBatteryCapacity(100);
-
         when(boxRepository.findByTxref(txref)).thenReturn(Optional.of(box));
         assertThrows(IllegalArgumentException.class, () -> {
             itemService.addItemToBox(txref, itemDto);

@@ -21,8 +21,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item addItemToBox(String txref, ItemDto itemDto) {
-        Box box = boxRepository.findByTxref(txref)
-                .orElseThrow(() -> new IllegalArgumentException("Box not found for txref: " + txref));
+        Box box = boxRepository.findByTxref(txref).orElseThrow(() -> new IllegalArgumentException("Box not found for txref: " + txref));
 
         if (box.getState() != BoxState.IDLE && box.getState() != BoxState.LOADING) {
             throw new IllegalArgumentException("Box is not in a state suitable for loading. It should be in IDLE or LOADING state.");
@@ -52,6 +51,6 @@ public class ItemServiceImpl implements ItemService {
     }
 
 
-    }
+}
 
 

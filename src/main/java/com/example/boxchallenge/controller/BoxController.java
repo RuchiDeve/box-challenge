@@ -27,11 +27,13 @@ public class BoxController {
         Box createdBox = boxService.createBox(boxDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBox);
     }
+
     @PostMapping("/{txref}/items")
     public ResponseEntity<String> addItemToBox(@Valid @PathVariable String txref, @RequestBody ItemDto itemDto) {
         Item item = itemService.addItemToBox(txref, itemDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Item added to box successfully");
     }
+
     @GetMapping("/{txref}/item")
     public ResponseEntity<Box> getBox(@PathVariable String txref) {
         Box box = boxService.getBox(txref);
